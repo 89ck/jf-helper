@@ -57,7 +57,7 @@ public class RestInterceptor implements Interceptor {
                     controller.render((String) inv.getReturnValue());
                 } else if (returnType.isAssignableFrom(Render.class)) {
                     controller.render((Render) inv.getReturnValue());
-                } else if (returnType.isAssignableFrom(Void.class)) {
+                } else if (returnType.isAssignableFrom(Void.class) || returnType.isAssignableFrom(void.class)) {
                     System.out.println("pass");
                 } else {
                     controller.renderNull();
