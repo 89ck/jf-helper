@@ -149,4 +149,12 @@ public class AuthorizationTokenManager {
         tokenCache.remove(token);
         tokenCache.put(token);
     }
+
+    /**
+     * 移除token信息
+     * @param token
+     */
+    public static void remove(AuthorizationToken token) {
+        tokenCache.remove(token);
+    }
 }
