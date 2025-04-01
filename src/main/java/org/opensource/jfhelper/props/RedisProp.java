@@ -1,5 +1,7 @@
 package org.opensource.jfhelper.props;
 
+import redis.clients.jedis.Protocol;
+
 /**
  * 实现Redis的缓存配置
  * @author seiya
@@ -13,15 +15,15 @@ public class RedisProp {
     /**
      * Redis服务器地址 默认 localhost
      */
-    protected String host = "localhost";
+    protected String host = Protocol.DEFAULT_HOST;
     /**
      * Redis服务器端口号 默认 6379
      */
-    protected Integer port = 6379;
+    protected Integer port = Protocol.DEFAULT_PORT;
     /**
      * 连接超时时间, jfinal 默认 2000 ms
      */
-    protected Integer timeout;
+    protected Integer timeout = Protocol.DEFAULT_TIMEOUT;
     /**
      * Redis服务器密码， 默认无密码
      */
@@ -29,7 +31,7 @@ public class RedisProp {
     /**
      * Redis 默认使用的数据库编号, 不填使用jfinal默认的
      */
-    protected Integer database;
+    protected Integer database = Protocol.DEFAULT_DATABASE;
     /**
      * Redis客户端名称， 默认无
      */

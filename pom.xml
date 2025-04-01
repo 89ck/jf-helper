@@ -6,7 +6,7 @@
 
     <groupId>io.github.89ck</groupId>
     <artifactId>jf-helper</artifactId>
-    <version>1.0.2</version>
+    <version>1.0.3</version>
     <name>jf-helper</name>
     <description>简化jFinal开发</description>
     <url>https://github.com/2715851270/jf-helper</url>
@@ -23,7 +23,6 @@
             <groupId>com.jfinal</groupId>
             <artifactId>jfinal</artifactId>
             <version>5.2.3</version>
-            <scope>provided</scope>
         </dependency>
 
         <dependency>
@@ -84,6 +83,13 @@
             <artifactId>junit</artifactId>
             <version>4.13.2</version>
             <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>redis.clients</groupId>
+            <artifactId>jedis</artifactId>
+            <version>3.6.3</version>
+            <scope>provided</scope>
         </dependency>
 
 

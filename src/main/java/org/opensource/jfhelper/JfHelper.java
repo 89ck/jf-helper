@@ -27,6 +27,7 @@ import org.opensource.jfhelper.props.RedisProp;
 import org.opensource.jfhelper.utils.Const;
 import org.opensource.jfhelper.utils.YmlKit;
 
+import java.util.List;
 import java.util.Objects;
 
 /**
@@ -72,7 +73,6 @@ public abstract class JfHelper extends JFinalConfig {
         constants.setInjectDependency(config.getInject());
         constants.setInjectSuperClass(config.getInject());
         constants.setJsonFactory(config.getJsonLib());
-        AuthorizationTokenManager.init(this.getAuthorizationTokenCache());
     }
 
     /**
@@ -136,14 +136,17 @@ public abstract class JfHelper extends JFinalConfig {
 
         // 加载Redis缓存的插件
         if (Objects.nonNull(config.getRedis())) {
-            RedisProp redisProp = config.getRedis();
-            RedisPlugin redisPlugin = null;
-            if (StrUtil.isBlank(redisProp.getClientName())) {
-                redisPlugin = new RedisPlugin(redisProp.getCacheName(), redisProp.getHost(), redisProp.getPort(), redisProp.getTimeout(), redisProp.getPassword(), redisProp.getDatabase());
-            } else {
-                redisPlugin = new RedisPlugin(redisProp.getCacheName(), redisProp.getHost(), redisProp.getPort(), redisProp.getTimeout(), redisProp.getPassword(), redisProp.getDatabase(), redisProp.getClientName());
+            List<RedisProp> redisProps = config.getRedis();
+            for (RedisProp redisProp : redisProps) {
+                RedisPlugin redisPlugin = null;
+                if (StrUtil.isBlank(redisProp.getClientName())) {
+                    redisPlugin = new RedisPlugin(redisProp.getCacheName(), redisProp.getHost(), redisProp.getPort(), redisProp.getTimeout(), redisProp.getPassword(), redisProp.getDatabase());
+                } else {
+                    redisPlugin = new RedisPlugin(redisProp.getCacheName(), redisProp.getHost(), redisProp.getPort(), redisProp.getTimeout(), redisProp.getPassword(), redisProp.getDatabase(), redisProp.getClientName());
+                }
+                plugins.add(redisPlugin);
             }
-            plugins.add(redisPlugin);
+
         }
 
 
@@ -197,6 +200,7 @@ public abstract class JfHelper extends JFinalConfig {
     public void onStart() {
         super.onStart();
         initSdkConfiguration();
+        AuthorizationTokenManager.init(this.getAuthorizationTokenCache());
     }
 
     /**

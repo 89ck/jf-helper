@@ -77,11 +77,12 @@ public class JFinalProp {
     @NestedConfigurationProperty
     private WxaProp wxMini;
 
+
     /**
      * 增加Redis缓存的配置
      */
     @NestedConfigurationProperty
-    private RedisProp redis;
+    private List<RedisProp> redis;
 
 
     public String getEncoding() {
@@ -148,11 +149,11 @@ public class JFinalProp {
         this.staticExtNames = staticExtNames;
     }
 
-    public RedisProp getRedis() {
+    public List<RedisProp> getRedis() {
         return redis;
     }
 
-    public void setRedis(RedisProp redis) {
+    public void setRedis(List<RedisProp> redis) {
         this.redis = redis;
     }
 
