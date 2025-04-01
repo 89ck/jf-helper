@@ -2,6 +2,7 @@ package org.opensource.jfhelper.utils;
 
 /**
  * 常量类
+ *
  * @author seiya
  */
 public final class Const {
@@ -43,5 +44,5 @@ public final class Const {
     /**
      * redis的配置前缀
      */
-    public static final String REDIS = ".redis";
+    public static final String REDIS = jFinal + ".redis";
 }
