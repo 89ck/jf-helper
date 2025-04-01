@@ -39,4 +39,9 @@ public final class Const {
      * 防重复提交的token名
      */
     public static final String SUBMIT_TOKEN = "_STASH_TOKEN";
+
+    /**
+     * redis的配置前缀
+     */
+    public static final String REDIS = ".redis";
 }
