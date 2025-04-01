@@ -1,8 +1,6 @@
 package org.opensource.jfhelper.utils;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import org.opensource.jfhelper.annocation.JFinalProperties;
 import org.opensource.jfhelper.exception.ValidException;
@@ -47,6 +45,13 @@ public class YmlKit {
             Object value = entry.getValue();
             if (value instanceof Map) {
                 value = toCameCase((Map) value);
+            }
+            if (value instanceof List){
+                List<Map<String, Object>> list = new ArrayList<>();
+                for (Map<String, Object> item : new ArrayList<>((List<Map<String, Object>>) value)) {
+                    list.add(toCameCase(item));
+                }
+                value = list;
             }
             tempMap.put(field2CameCase(entry.getKey()), value);
         }
