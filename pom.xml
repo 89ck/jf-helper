@@ -6,7 +6,7 @@
 
     <groupId>io.github.89ck</groupId>
     <artifactId>jf-helper</artifactId>
-    <version>1.0.3</version>
+    <version>1.0.4</version>
     <name>jf-helper</name>
     <description>简化jFinal开发</description>
     <url>https://github.com/2715851270/jf-helper</url>
