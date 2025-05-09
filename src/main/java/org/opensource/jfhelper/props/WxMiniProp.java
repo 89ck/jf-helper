@@ -1,6 +1,6 @@
 package org.opensource.jfhelper.props;
 
-import org.opensource.jfhelper.annocation.JFinalProperties;
+import org.opensource.jfhelper.annocation.JfYml;
 import org.opensource.jfhelper.utils.Const;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
@@ -10,9 +10,9 @@ import org.springframework.stereotype.Component;
  * @author seiya
  */
 @Component
-@JFinalProperties(prefix = Const.WX_APP)
-@ConfigurationProperties(prefix = Const.WX_APP)
-public class WxaProp {
+@JfYml(prefix = Const.WXMINI)
+@ConfigurationProperties(prefix = Const.WXMINI)
+public class WxMiniProp {
 
     /**
      * 小程序的appId

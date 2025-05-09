@@ -52,7 +52,13 @@ public abstract class JfHelper extends JFinalConfig {
      * 设置默认的配置文件路径， 默认使用 classpath:application.yml
      */
     public String getCfgFilePath() {
-        Prop prop = PropKit.use(".env");
+        Prop prop;
+        try {
+            prop = PropKit.use(".env");
+        } catch (Exception e) {
+            logger.error("未找到.env文件，默认使用application.yml配置文件");
+            prop = new Prop();
+        }
         String env = "env";
         if (StrUtil.isBlank(prop.get(env))) {
             return Const.CONFIG_PATH;

@@ -11,7 +11,7 @@ import java.lang.annotation.Target;
  */
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
-public @interface JFinalProperties {
+public @interface JfYml {
 
     /**
      * 前缀字符串， 用于根据前缀自动匹配数据。

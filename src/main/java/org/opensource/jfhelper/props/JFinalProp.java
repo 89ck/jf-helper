@@ -6,7 +6,7 @@ import com.jfinal.config.Routes;
 import com.jfinal.json.FastJsonFactory;
 import com.jfinal.json.IJsonFactory;
 import com.jfinal.json.JacksonFactory;
-import org.opensource.jfhelper.annocation.JFinalProperties;
+import org.opensource.jfhelper.annocation.JfYml;
 import org.opensource.jfhelper.exception.ValidException;
 import org.opensource.jfhelper.utils.Const;
 import org.springframework.boot.context.properties.NestedConfigurationProperty;
@@ -22,8 +22,8 @@ import java.util.List;
  * @author seiya
  */
 @Component
-@JFinalProperties(prefix = Const.jFinal)
-@org.springframework.boot.context.properties.ConfigurationProperties(prefix = "jFinal")
+@JfYml(prefix = Const.jFinal)
+@org.springframework.boot.context.properties.ConfigurationProperties(prefix = Const.jFinal)
 public class JFinalProp {
 
     /**
@@ -69,13 +69,13 @@ public class JFinalProp {
      * 微信的配置
      */
     @NestedConfigurationProperty
-    private WxProp wechat;
+    private WeChatProp wechat;
 
     /**
      * 微信小程序的配置
      */
     @NestedConfigurationProperty
-    private WxaProp wxMini;
+    private WxMiniProp wxMini;
 
 
     /**
@@ -121,19 +121,19 @@ public class JFinalProp {
         this.database = database;
     }
 
-    public WxProp getWechat() {
+    public WeChatProp getWechat() {
         return wechat;
     }
 
-    public void setWechat(WxProp wechat) {
+    public void setWechat(WeChatProp wechat) {
         this.wechat = wechat;
     }
 
-    public WxaProp getWxMini() {
+    public WxMiniProp getWxMini() {
         return wxMini;
     }
 
-    public void setWxMini(WxaProp wxMini) {
+    public void setWxMini(WxMiniProp wxMini) {
         this.wxMini = wxMini;
     }
 

@@ -2,7 +2,7 @@ package org.opensource.jfhelper.utils;
 
 import java.util.*;
 
-import org.opensource.jfhelper.annocation.JFinalProperties;
+import org.opensource.jfhelper.annocation.JfYml;
 import org.opensource.jfhelper.exception.ValidException;
 import org.opensource.jfhelper.props.JFinalProp;
 import org.yaml.snakeyaml.Yaml;
@@ -137,7 +137,7 @@ public class YmlKit {
      * @return
      */
     public static <T> T getObject(Class<T> clazz) {
-        JFinalProperties config = clazz.getAnnotation(JFinalProperties.class);
+        JfYml config = clazz.getAnnotation(JfYml.class);
         String prefix = config.prefix();
         return toBean(clazz, prefix);
     }

@@ -2,7 +2,7 @@ package org.opensource.jfhelper.props;
 
 import com.jfinal.plugin.activerecord.dialect.*;
 
-import org.opensource.jfhelper.annocation.JFinalProperties;
+import org.opensource.jfhelper.annocation.JfYml;
 import org.opensource.jfhelper.utils.Const;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
  * @author seiya
  */
 @Component
-@JFinalProperties(prefix = Const.DATABASE)
+@JfYml(prefix = Const.DATABASE)
 @ConfigurationProperties(prefix = Const.DATABASE)
 public class DbProp {
 

@@ -1,6 +1,6 @@
 package org.opensource.jfhelper.props;
 
-import org.opensource.jfhelper.annocation.JFinalProperties;
+import org.opensource.jfhelper.annocation.JfYml;
 import org.opensource.jfhelper.utils.Const;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
@@ -11,7 +11,7 @@ import redis.clients.jedis.Protocol;
  * @author seiya
  */
 @Component
-@JFinalProperties(prefix = Const.REDIS)
+@JfYml(prefix = Const.REDIS)
 @ConfigurationProperties(prefix = Const.REDIS)
 public class RedisProp {
 

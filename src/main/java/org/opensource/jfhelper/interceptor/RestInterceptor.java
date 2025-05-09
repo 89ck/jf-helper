@@ -44,14 +44,15 @@ public class RestInterceptor implements Interceptor {
         Method invMethod = inv.getMethod();
         Controller controller = inv.getController();
 
+        Class<?> returnType = invMethod.getReturnType();
+
         // 如果是void的返回值，标记rest返回空，标记view或者不标记不做特殊处理。
-        if (invMethod.getReturnType().isAssignableFrom(Void.class)) {
+        if (returnType.isAssignableFrom(Void.class) || returnType.isAssignableFrom(void.class)) {
             if (invMethod.isAnnotationPresent(Rest.class)) {
                 controller.renderNull();
             }
         } else {
             // 如果有返回值， 标记view的根据字符串或者render返回， 其他根据返回的参数类型返回结果
-            Class<?> returnType = invMethod.getReturnType();
             if (invMethod.isAnnotationPresent(View.class)) {
                 if (returnType.isAssignableFrom(String.class)) {
                     controller.render((String) inv.getReturnValue());
@@ -66,7 +67,9 @@ public class RestInterceptor implements Interceptor {
                 if (returnType.isAssignableFrom(File.class)) {
                     controller.renderFile((File) inv.getReturnValue());
                 } else if (returnType.isAssignableFrom(String.class)) {
-                    controller.renderText((String) inv.getReturnValue());
+                    controller.renderText(inv.getReturnValue());
+                } else if(returnType.isAssignableFrom(void.class) || returnType.isAssignableFrom(Void.class)){
+                    System.out.println("pass");
                 } else {
                     controller.renderJson((Object) inv.getReturnValue());
                 }

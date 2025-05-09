@@ -24,12 +24,12 @@ public final class Const {
     /**
      * 微信配置的前缀
      */
-    public static final String WX_WEB = jFinal + ".wechat";
+    public static final String WECHAT = jFinal + ".wechat";
 
     /**
      * 微信小程序的前缀
      */
-    public static final String WX_APP = jFinal + ".wx-mini";
+    public static final String WXMINI = jFinal + ".wxmini";
 
     /**
      * 访问授权的token
@@ -45,4 +45,9 @@ public final class Const {
      * redis的配置前缀
      */
     public static final String REDIS = jFinal + ".redis";
+
+    /**
+     * 防抖缓存的tokenCache的名字
+     */
+    public static final String ANTI_SHAKE_TOKEN_CACHE_NAME = "ANTI_SHAKE_TOKEN_CACHE";
 }
