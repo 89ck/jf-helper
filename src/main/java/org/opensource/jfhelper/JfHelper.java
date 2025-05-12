@@ -3,6 +3,7 @@ package org.opensource.jfhelper;
 import cn.hutool.core.collection.CollUtil;
 import cn.hutool.core.util.StrUtil;
 import com.alibaba.druid.filter.logging.Log4jFilter;
+import com.jfinal.aop.AopManager;
 import com.jfinal.config.*;
 import com.jfinal.ext.cors.CORSInterceptor;
 import com.jfinal.kit.Prop;
@@ -19,6 +20,7 @@ import com.jfinal.wxaapp.WxaConfigKit;
 import org.opensource.jfhelper.authorization.AuthorizationTokenCache;
 import org.opensource.jfhelper.authorization.AuthorizationTokenManager;
 import org.opensource.jfhelper.authorization.DefaultAuthorizationTokenCache;
+import org.opensource.jfhelper.core.JfAopFactory;
 import org.opensource.jfhelper.interceptor.RestInterceptor;
 import org.opensource.jfhelper.interceptor.StaticFileHandler;
 import org.opensource.jfhelper.interceptor.ValidInterceptor;
@@ -76,6 +78,10 @@ public abstract class JfHelper extends JFinalConfig {
         initConfigurationProperties();
         constants.setEncoding(config.getEncoding());
         constants.setDevMode(config.getDevMode());
+        // 判断，是否使用自定义的 aopFactory 注入注解
+        if (!config.getUseInject()) {
+            AopManager.me().setAopFactory(new JfAopFactory(this.getClass().getPackage().getName()));
+        }
         constants.setInjectDependency(config.getInject());
         constants.setInjectSuperClass(config.getInject());
         constants.setJsonFactory(config.getJsonLib());

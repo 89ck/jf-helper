@@ -42,6 +42,11 @@ public class JFinalProp {
     private Boolean inject = Boolean.TRUE;
 
     /**
+     * 是否使用 jFinal 的原始注入注解， 默认false, 请使用@Resource注解注入 + @Bean注解标记接口实现类
+     */
+    private Boolean useInject = Boolean.FALSE;
+
+    /**
      * 默认json解析器， 默认使用 fastjson
      */
     private String jsonLib = "fastjson";
@@ -185,12 +190,21 @@ public class JFinalProp {
         }
     }
 
+    public Boolean getUseInject() {
+        return useInject;
+    }
+
+    public void setUseInject(Boolean useInject) {
+        this.useInject = useInject;
+    }
+
     @Override
     public String toString() {
         return "JFinalProp{" +
                 "encoding='" + encoding + '\'' +
                 ", devMode=" + devMode +
                 ", inject=" + inject +
+                ", useInject=" + useInject +
                 ", jsonLib='" + jsonLib + '\'' +
                 ", routes=" + routes +
                 ", staticExtNames=" + staticExtNames +
