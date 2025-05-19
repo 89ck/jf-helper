@@ -20,7 +20,7 @@ public class ValidInterceptor implements Interceptor {
         try {
             inv.invoke();
         } catch (ValidException e) {
-            Ret validRet = Ret.fail().set("message", e.getMessage()).set("code", e.getCode());
+            Ret validRet = Ret.fail().set("message", e.getMessage()).set("code", e.getCode()).set("data", e.getData());
             inv.setReturnValue(validRet);
             inv.getController().renderJson(validRet);
         }

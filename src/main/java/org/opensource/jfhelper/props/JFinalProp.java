@@ -51,6 +51,11 @@ public class JFinalProp {
      */
     private String jsonLib = "fastjson";
 
+    /**
+     * 是否使用rest风格的请求，即 Content-Type	application/json;charset=utf-8, 默认为true
+     */
+    private Boolean useRest = Boolean.TRUE;
+
 
     /**
      * 设置路由的接口,课设置多个路由,按先后顺序加载
@@ -188,6 +193,14 @@ public class JFinalProp {
                     throw new ValidException("not support jsonType !");
                 }
         }
+    }
+
+    public Boolean getUseRest() {
+        return useRest;
+    }
+
+    public void setUseRest(Boolean useRest) {
+        this.useRest = useRest;
     }
 
     public Boolean getUseInject() {

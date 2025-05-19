@@ -85,6 +85,7 @@ public abstract class JfHelper extends JFinalConfig {
         constants.setInjectDependency(config.getInject());
         constants.setInjectSuperClass(config.getInject());
         constants.setJsonFactory(config.getJsonLib());
+        constants.setResolveJsonRequest(config.getUseRest());
     }
 
     /**
